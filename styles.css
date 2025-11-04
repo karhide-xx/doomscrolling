@@ -1,0 +1,1108 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Dark Color Palette */
+    --black: #0a0a0a;
+    --dark-gray: #1a1a1a;
+    --medium-gray: #2a2a2a;
+    --light-gray: #3a3a3a;
+    --blood-red: #8b0000;
+    --crimson: #dc143c;
+    --bone-white: #f5f5dc;
+    --steel-blue: #4682b4;
+    --rust: #b7410e;
+    
+    /* Typography */
+    --font-metal: 'Oswald', 'Impact', 'Franklin Gothic Bold', Arial, sans-serif;
+    --font-horror: 'Bebas Neue', 'Impact', Arial, sans-serif;
+    --font-dark: 'Oswald', 'Impact', Arial, sans-serif;
+    --font-body: 'Arial', Helvetica, sans-serif;
+    
+    /* Spacing */
+    --section-padding: 80px 0;
+    --container-padding: 0 20px;
+    
+    /* Transitions */
+    --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --fast-transition: all 0.2s ease;
+}
+
+/* Global Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background: 
+        /* Base distressed texture */
+        radial-gradient(circle at 25% 25%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 50% 10%, rgba(139, 0, 0, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 20% 80%, rgba(0, 0, 0, 0.2) 0%, transparent 60%),
+        
+        /* Heavy scratches */
+        linear-gradient(23deg, transparent 0%, rgba(0,0,0,0.1) 1px, transparent 2px),
+        linear-gradient(-45deg, transparent 0%, rgba(139,0,0,0.05) 0.5px, transparent 1px),
+        linear-gradient(67deg, transparent 0%, rgba(0,0,0,0.08) 1px, transparent 2px),
+        
+        /* Base color */
+        var(--black);
+    background-size: 
+        100% 100%, 100% 100%, 100% 100%, 100% 100%,
+        100px 100px, 150px 150px, 80px 80px,
+        100% 100%;
+    color: var(--bone-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Heavily Distressed Background Texture */
+.noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.6;
+    z-index: 1;
+    pointer-events: none;
+    background: 
+        /* Massive tears and rips */
+        linear-gradient(25deg, transparent 0%, rgba(0,0,0,0.9) 2%, rgba(0,0,0,0.9) 8%, transparent 10%) 0 0 / 400px 600px,
+        linear-gradient(-45deg, transparent 0%, rgba(0,0,0,0.8) 1%, rgba(0,0,0,0.8) 4%, transparent 6%) 100px 200px / 350px 500px,
+        linear-gradient(70deg, transparent 0%, rgba(139,0,0,0.6) 1%, rgba(139,0,0,0.6) 3%, transparent 5%) 200px 100px / 300px 800px,
+        linear-gradient(-10deg, transparent 0%, rgba(0,0,0,0.7) 0.5%, rgba(0,0,0,0.7) 2%, transparent 3%) 50px 300px / 250px 400px,
+        
+        /* Large burn and blast marks */
+        radial-gradient(ellipse 150px 80px at 15% 25%, rgba(139, 0, 0, 0.4) 30%, rgba(0,0,0,0.6) 60%, transparent 100%),
+        radial-gradient(ellipse 120px 120px at 85% 70%, rgba(0, 0, 0, 0.5) 40%, rgba(139,0,0,0.3) 70%, transparent 100%),
+        radial-gradient(ellipse 200px 100px at 60% 10%, rgba(139, 0, 0, 0.3) 20%, rgba(0,0,0,0.4) 50%, transparent 100%),
+        radial-gradient(ellipse 80px 150px at 30% 90%, rgba(0, 0, 0, 0.6) 35%, rgba(139,0,0,0.2) 65%, transparent 100%),
+        
+        /* Heavy dirt, grime and stains */
+        radial-gradient(circle 100px at 70% 40%, rgba(0,0,0,0.3) 20%, transparent 60%),
+        radial-gradient(circle 80px at 20% 60%, rgba(139,0,0,0.2) 30%, transparent 70%),
+        radial-gradient(circle 120px at 90% 20%, rgba(0,0,0,0.4) 25%, transparent 65%),
+        radial-gradient(circle 60px at 10% 80%, rgba(139,0,0,0.25) 40%, transparent 80%),
+        
+        /* Fine scratches and wear patterns */
+        repeating-linear-gradient(23deg, transparent 0px, rgba(0,0,0,0.2) 1px, transparent 3px, rgba(0,0,0,0.1) 6px, transparent 12px),
+        repeating-linear-gradient(-67deg, transparent 0px, rgba(139,0,0,0.15) 1px, transparent 4px, rgba(0,0,0,0.1) 8px, transparent 16px),
+        repeating-linear-gradient(89deg, transparent 0px, rgba(0,0,0,0.1) 1px, transparent 2px, rgba(0,0,0,0.05) 10px, transparent 20px);
+    
+    background-size: 
+        400px 600px, 350px 500px, 300px 800px, 250px 400px,
+        100% 100%, 100% 100%, 100% 100%, 100% 100%,
+        100% 100%, 100% 100%, 100% 100%, 100% 100%,
+        50px 50px, 30px 30px, 80px 80px;
+}
+
+/* Simplified animations for better performance */
+@keyframes subtle-pulse {
+    0%, 100% { 
+        opacity: 0.8; 
+    }
+    50% { 
+        opacity: 1; 
+    }
+}
+
+@keyframes slow-rotate {
+    0% { 
+        transform: rotate(0deg); 
+    }
+    100% { 
+        transform: rotate(360deg); 
+    }
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--container-padding);
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: 
+        linear-gradient(180deg, rgba(26, 26, 26, 0.98) 0%, rgba(10, 10, 10, 0.95) 100%);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    border-bottom: 3px solid var(--dark-gray);
+    box-shadow: 
+        0 5px 20px rgba(0, 0, 0, 0.9),
+        inset 0 -2px 0 rgba(139, 0, 0, 0.5);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 95% 100%, 5% 100%, 0% 85%);
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        /* Heavy scratches across header */
+        linear-gradient(45deg, transparent 60%, rgba(0,0,0,0.7) 61%, transparent 63%),
+        linear-gradient(-25deg, transparent 30%, rgba(0,0,0,0.6) 31%, transparent 33%),
+        /* Blast marks */
+        radial-gradient(circle at 70% 50%, rgba(0,0,0,0.4) 15px, transparent 25px),
+        radial-gradient(circle at 20% 30%, rgba(139,0,0,0.3) 10px, transparent 20px),
+        /* Heavy wear */
+        repeating-linear-gradient(
+            15deg,
+            rgba(0,0,0,0.1) 0px,
+            rgba(0,0,0,0.4) 2px,
+            transparent 5px,
+            rgba(139,0,0,0.2) 8px,
+            transparent 15px
+        );
+    pointer-events: none;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 10%;
+    width: 150px;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    transform: rotate(-2deg);
+    box-shadow: 
+        200px 2px 0 4px rgba(0, 0, 0, 0.6),
+        -80px 4px 0 2px rgba(139, 0, 0, 0.4),
+        400px -2px 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo {
+    font-family: var(--font-horror);
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--bone-white);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+    filter: contrast(1.2) brightness(0.9);
+}
+
+.logo::after {
+    content: 'DOOM SCROLLING';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    color: var(--blood-red);
+    z-index: -1;
+    opacity: 0.4;
+    filter: blur(0.5px);
+}
+
+.logo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(90deg, transparent 20%, rgba(0,0,0,0.3) 21%, transparent 22%),
+        linear-gradient(90deg, transparent 60%, rgba(0,0,0,0.2) 61%, transparent 62%),
+        linear-gradient(0deg, transparent 40%, rgba(139,0,0,0.1) 41%, transparent 42%);
+    pointer-events: none;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--bone-white);
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--crimson);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--crimson);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--bone-white);
+    margin: 3px 0;
+    transition: var(--transition);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: 
+        /* Heavy battle damage */
+        linear-gradient(25deg, transparent 20%, rgba(0,0,0,0.8) 22%, rgba(0,0,0,0.8) 28%, transparent 30%),
+        linear-gradient(-40deg, transparent 60%, rgba(139,0,0,0.4) 62%, rgba(139,0,0,0.4) 68%, transparent 70%),
+        linear-gradient(75deg, transparent 80%, rgba(0,0,0,0.6) 82%, rgba(0,0,0,0.6) 86%, transparent 88%),
+        
+        /* Large burn marks */
+        radial-gradient(ellipse 300px 200px at 15% 80%, rgba(139,0,0,0.3) 30%, rgba(0,0,0,0.5) 60%, transparent 100%),
+        radial-gradient(ellipse 400px 150px at 85% 20%, rgba(0,0,0,0.6) 25%, rgba(139,0,0,0.2) 70%, transparent 100%),
+        
+        /* Base gradients */
+        linear-gradient(180deg, var(--black) 0%, var(--dark-gray) 30%, var(--black) 100%),
+        
+        /* Fine damage texture */
+        repeating-linear-gradient(
+            45deg,
+            transparent 0px,
+            rgba(139, 0, 0, 0.05) 2px,
+            transparent 8px,
+            rgba(0, 0, 0, 0.1) 12px,
+            transparent 20px
+        );
+    overflow: hidden;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero-title {
+    font-family: var(--font-dark);
+    font-size: clamp(3rem, 8vw, 8rem);
+    font-weight: 900;
+    color: var(--bone-white);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    position: relative;
+}
+
+
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--light-gray);
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-button {
+    padding: 15px 30px;
+    font-family: var(--font-body);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 4px solid;
+    background: var(--dark-gray);
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: visible;
+    box-shadow: 
+        inset 0 0 20px rgba(0, 0, 0, 0.8),
+        0 6px 20px rgba(0, 0, 0, 0.9);
+    clip-path: polygon(
+        8% 0%, 
+        92% 0%, 
+        100% 15%, 
+        100% 85%, 
+        88% 100%, 
+        12% 100%, 
+        0% 88%, 
+        0% 12%
+    );
+
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        /* Battle damage */
+        linear-gradient(35deg, transparent 40%, rgba(0,0,0,0.8) 42%, transparent 45%),
+        linear-gradient(-60deg, transparent 70%, rgba(0,0,0,0.6) 72%, transparent 75%),
+        /* Bullet holes */
+        radial-gradient(circle at 80% 30%, rgba(0,0,0,0.9) 3px, transparent 6px),
+        radial-gradient(circle at 20% 70%, rgba(139,0,0,0.5) 4px, transparent 8px);
+    pointer-events: none;
+}
+
+.cta-button::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: 20%;
+    width: 25px;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.8);
+    transform: rotate(-45deg);
+    box-shadow: 
+        -20px 15px 0 2px rgba(0, 0, 0, 0.6),
+        15px -8px 0 1px rgba(139, 0, 0, 0.4),
+        -35px 30px 0 1px rgba(0, 0, 0, 0.5);
+}
+
+.cta-button.primary {
+    color: var(--crimson);
+    border-color: var(--crimson);
+}
+
+.cta-button.secondary {
+    color: var(--bone-white);
+    border-color: var(--bone-white);
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.cta-button.primary::before {
+    background: var(--crimson);
+}
+
+.cta-button.secondary::before {
+    background: var(--bone-white);
+}
+
+.cta-button:hover::before {
+    left: 0;
+}
+
+.cta-button.primary:hover {
+    color: var(--black);
+}
+
+.cta-button.secondary:hover {
+    color: var(--black);
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.glitch-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        /* Heavy damage overlay for hero */
+        linear-gradient(35deg, transparent 30%, rgba(0,0,0,0.7) 32%, rgba(0,0,0,0.7) 38%, transparent 40%),
+        linear-gradient(-20deg, transparent 60%, rgba(139,0,0,0.5) 62%, rgba(139,0,0,0.5) 68%, transparent 70%),
+        linear-gradient(80deg, transparent 10%, rgba(0,0,0,0.6) 12%, rgba(0,0,0,0.6) 16%, transparent 18%),
+        
+        /* Blast damage */
+        radial-gradient(ellipse at 70% 30%, rgba(0,0,0,0.8) 40px, rgba(139,0,0,0.3) 80px, transparent 120px),
+        radial-gradient(ellipse at 20% 80%, rgba(139,0,0,0.6) 30px, rgba(0,0,0,0.4) 60px, transparent 100px),
+        
+        /* Wear and tear texture */
+        repeating-linear-gradient(
+            15deg,
+            transparent 0px,
+            rgba(0, 0, 0, 0.1) 2px,
+            transparent 5px,
+            rgba(139, 0, 0, 0.05) 8px,
+            transparent 15px
+        );
+    opacity: 0.8;
+}
+
+/* Section Titles */
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.title-text {
+    font-family: var(--font-metal);
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--bone-white);
+    display: block;
+    position: relative;
+    z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.title-underline {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: var(--blood-red);
+    box-shadow: 0 0 10px var(--blood-red);
+}
+
+/* Releases Section */
+.releases {
+    padding: var(--section-padding);
+    background: 
+        /* Major structural damage */
+        linear-gradient(45deg, transparent 40%, rgba(0,0,0,0.7) 42%, rgba(0,0,0,0.7) 48%, transparent 50%),
+        linear-gradient(-30deg, transparent 70%, rgba(139,0,0,0.5) 72%, rgba(139,0,0,0.5) 76%, transparent 78%),
+        
+        /* Large impact craters */
+        radial-gradient(ellipse 250px 150px at 20% 30%, rgba(0,0,0,0.6) 40%, rgba(139,0,0,0.2) 80%, transparent 100%),
+        radial-gradient(ellipse 200px 200px at 80% 70%, rgba(139,0,0,0.4) 30%, rgba(0,0,0,0.3) 70%, transparent 100%),
+        
+        /* Base background */
+        linear-gradient(135deg, var(--dark-gray) 0%, var(--black) 50%, var(--dark-gray) 100%),
+        
+        /* Weathering texture */
+        repeating-radial-gradient(circle at 30% 60%, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.3) 5px, transparent 15px),
+        repeating-radial-gradient(circle at 70% 20%, rgba(139,0,0,0.08) 0px, rgba(139,0,0,0.2) 3px, transparent 10px);
+    position: relative;
+}
+
+.releases::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 15% 25%, rgba(139, 0, 0, 0.05) 3px, transparent 4px),
+        radial-gradient(circle at 85% 75%, rgba(0, 0, 0, 0.1) 2px, transparent 3px),
+        radial-gradient(circle at 60% 40%, rgba(0, 0, 0, 0.08) 1px, transparent 2px),
+        repeating-linear-gradient(
+            -15deg,
+            transparent 0px,
+            rgba(0, 0, 0, 0.02) 1px,
+            transparent 2px,
+            rgba(0, 0, 0, 0.01) 30px,
+            transparent 32px
+        );
+    pointer-events: none;
+}
+
+.releases-grid {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.release-card {
+    background: var(--medium-gray);
+    border: 2px solid var(--light-gray);
+    overflow: hidden;
+    transition: var(--transition);
+    position: relative;
+    box-shadow: 
+        inset 0 0 10px rgba(0, 0, 0, 0.5),
+        0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+
+
+.release-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--blood-red);
+    box-shadow: 
+        inset 0 0 15px rgba(0, 0, 0, 0.7),
+        0 5px 20px rgba(139, 0, 0, 0.4);
+}
+
+.release-card.featured {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    max-width: 800px;
+    width: 100%;
+}
+
+.release-image {
+    position: relative;
+    aspect-ratio: 1;
+    background: var(--dark-gray);
+    overflow: hidden;
+}
+
+.album-cover {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: 
+        linear-gradient(135deg, var(--dark-gray) 0%, var(--black) 40%, var(--blood-red) 100%);
+    position: relative;
+    border: 5px solid var(--medium-gray);
+    box-shadow: 
+        inset 0 0 30px rgba(0, 0, 0, 0.9),
+        0 0 0 2px var(--blood-red);
+    clip-path: polygon(
+        0% 15%, 
+        8% 0%, 
+        85% 0%, 
+        100% 12%, 
+        100% 88%, 
+        92% 100%, 
+        15% 100%, 
+        0% 85%
+    );
+
+}
+
+.album-cover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        /* Massive crack */
+        linear-gradient(25deg, transparent 45%, rgba(0,0,0,0.9) 48%, rgba(0,0,0,0.9) 52%, transparent 55%),
+        /* Deep scratches */
+        linear-gradient(70deg, transparent 20%, rgba(0,0,0,0.8) 21%, transparent 23%),
+        linear-gradient(-45deg, transparent 60%, rgba(0,0,0,0.7) 62%, transparent 65%),
+        /* Bullet holes */
+        radial-gradient(circle at 70% 30%, rgba(0, 0, 0, 0.9) 8px, rgba(0,0,0,0.5) 12px, transparent 15px),
+        radial-gradient(circle at 20% 80%, rgba(0, 0, 0, 0.8) 6px, rgba(139,0,0,0.4) 10px, transparent 13px),
+        /* Heavy wear */
+        repeating-linear-gradient(
+            15deg,
+            rgba(0,0,0,0.2) 0px,
+            rgba(0,0,0,0.6) 3px,
+            transparent 6px,
+            rgba(139,0,0,0.3) 10px,
+            transparent 15px
+        );
+}
+
+.album-cover::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 100px;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.9);
+    transform: rotate(35deg);
+    box-shadow: 
+        -40px 30px 0 5px rgba(0, 0, 0, 0.8),
+        60px -20px 0 3px rgba(139, 0, 0, 0.6),
+        -80px 60px 0 2px rgba(0, 0, 0, 0.7),
+        40px 40px 0 6px rgba(0, 0, 0, 0.5),
+        -20px -10px 0 4px rgba(139, 0, 0, 0.4);
+}
+
+.album-placeholder {
+    font-family: var(--font-metal);
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--bone-white);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 2;
+    position: relative;
+}
+
+.album-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.release-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.release-image:hover .release-overlay {
+    opacity: 1;
+}
+
+.play-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--crimson);
+    border: none;
+    color: var(--bone-white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.play-btn:hover {
+    background: var(--blood-red);
+    transform: scale(1.1);
+}
+
+.release-info {
+    padding: 1.5rem;
+}
+
+.release-title {
+    font-family: var(--font-metal);
+    font-size: 1.5rem;
+    color: var(--bone-white);
+    margin-bottom: 0.5rem;
+    position: relative;
+    filter: contrast(1.1) brightness(0.9);
+}
+
+.release-title::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    width: 20px;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.3);
+    transform: rotate(-5deg);
+}
+
+.release-type, .release-date {
+    color: var(--bone-white);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.release-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.release-link {
+    color: var(--bone-white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: 1px solid var(--light-gray);
+    padding: 0.5rem 1rem;
+    transition: var(--transition);
+}
+
+.release-link:hover {
+    background: var(--crimson);
+    border-color: var(--crimson);
+}
+
+/* News Section */
+.news {
+    padding: var(--section-padding);
+    background: 
+        /* Severe battle scars */
+        linear-gradient(70deg, transparent 10%, rgba(0,0,0,0.8) 12%, rgba(0,0,0,0.8) 18%, transparent 20%),
+        linear-gradient(-20deg, transparent 50%, rgba(139,0,0,0.6) 52%, rgba(139,0,0,0.6) 58%, transparent 60%),
+        linear-gradient(35deg, transparent 80%, rgba(0,0,0,0.7) 82%, rgba(0,0,0,0.7) 86%, transparent 88%),
+        
+        /* Massive blast damage */
+        radial-gradient(ellipse 350px 200px at 70% 40%, rgba(0,0,0,0.7) 20%, rgba(139,0,0,0.3) 60%, transparent 100%),
+        radial-gradient(ellipse 180px 300px at 25% 70%, rgba(139,0,0,0.5) 35%, rgba(0,0,0,0.4) 75%, transparent 100%),
+        
+        /* Base color */
+        var(--black),
+        
+        /* Grime and wear */
+        repeating-linear-gradient(
+            -15deg,
+            rgba(0,0,0,0.05) 0px,
+            rgba(0,0,0,0.2) 3px,
+            transparent 8px,
+            rgba(139,0,0,0.08) 12px,
+            transparent 20px
+        );
+    position: relative;
+}
+
+.news::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(
+            45deg,
+            transparent 0px,
+            rgba(0, 0, 0, 0.3) 1px,
+            transparent 2px
+        ) 20px 20px / 40px 40px,
+        radial-gradient(circle at 25% 60%, rgba(139, 0, 0, 0.03) 5px, transparent 6px),
+        radial-gradient(circle at 75% 20%, rgba(0, 0, 0, 0.05) 3px, transparent 4px),
+        repeating-linear-gradient(
+            75deg,
+            transparent 0px,
+            rgba(139, 0, 0, 0.01) 1px,
+            transparent 2px,
+            rgba(0, 0, 0, 0.02) 25px,
+            transparent 27px
+        );
+    pointer-events: none;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.news-card {
+    background: var(--dark-gray);
+    border-left: 4px solid var(--blood-red);
+    overflow: hidden;
+    transition: var(--transition);
+    position: relative;
+    box-shadow: 
+        inset 0 0 10px rgba(0, 0, 0, 0.6),
+        0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+
+
+.news-card:hover {
+    transform: translateX(5px);
+    border-left-width: 5px;
+    box-shadow: 
+        inset 0 0 15px rgba(0, 0, 0, 0.8),
+        -3px 3px 15px rgba(139, 0, 0, 0.4);
+}
+
+.news-card.featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.news-image {
+    width: 300px;
+    height: 100%;
+    background: var(--medium-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.news-placeholder {
+    font-family: var(--font-metal);
+    font-size: 1.5rem;
+    color: var(--crimson);
+}
+
+.news-article-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 1.5rem;
+}
+
+.news-date {
+    color: var(--bone-white);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.news-title {
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    color: var(--bone-white);
+    margin: 0.5rem 0;
+    position: relative;
+    filter: contrast(1.05) brightness(0.95);
+}
+
+.news-title::before {
+    content: '';
+    position: absolute;
+    top: 70%;
+    right: 10%;
+    width: 15px;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.2);
+    transform: rotate(10deg);
+}
+
+.news-excerpt {
+    color: var(--bone-white);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.news-link {
+    color: var(--crimson);
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.news-link:hover {
+    color: var(--bone-white);
+}
+
+/* Contact Section */
+.contact {
+    padding: var(--section-padding);
+    background: 
+        /* Heavy destruction */
+        linear-gradient(50deg, transparent 30%, rgba(0,0,0,0.8) 32%, rgba(0,0,0,0.8) 38%, transparent 40%),
+        linear-gradient(-60deg, transparent 65%, rgba(139,0,0,0.5) 67%, rgba(139,0,0,0.5) 73%, transparent 75%),
+        
+        /* Impact damage */
+        radial-gradient(ellipse 280px 180px at 60% 30%, rgba(139,0,0,0.4) 30%, rgba(0,0,0,0.5) 70%, transparent 100%),
+        radial-gradient(ellipse 150px 250px at 20% 80%, rgba(0,0,0,0.6) 25%, rgba(139,0,0,0.2) 65%, transparent 100%),
+        
+        /* Base gradient */
+        linear-gradient(45deg, var(--dark-gray) 0%, var(--black) 100%),
+        
+        /* Surface wear */
+        repeating-linear-gradient(
+            75deg,
+            rgba(0,0,0,0.08) 0px,
+            rgba(0,0,0,0.25) 2px,
+            transparent 6px,
+            rgba(139,0,0,0.1) 10px,
+            transparent 18px
+        );
+}
+
+.contact-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-info h3 {
+    font-family: var(--font-metal);
+    font-size: 2rem;
+    color: var(--crimson);
+    margin-bottom: 1rem;
+}
+
+.contact-info p {
+    color: var(--light-gray);
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.social-link {
+    color: var(--bone-white);
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid var(--light-gray);
+    transition: var(--transition);
+    background: transparent;
+}
+
+.social-link:hover {
+    background: var(--crimson);
+    border-color: var(--crimson);
+    transform: translateY(-3px);
+}
+
+.booking-info {
+    text-align: left;
+}
+
+.booking-info p {
+    margin-bottom: 0.5rem;
+}
+
+.booking-info strong {
+    color: var(--crimson);
+}
+
+/* Footer */
+.footer {
+    background: var(--black);
+    border-top: 2px solid var(--blood-red);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer p {
+    color: var(--light-gray);
+    font-size: 0.9rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--dark-gray);
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        padding-top: 2rem;
+        transition: left 0.3s ease;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+    
+    .hero-title {
+        font-size: clamp(2rem, 12vw, 4rem);
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-button {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .release-card.featured,
+    .news-card.featured {
+        grid-template-columns: 1fr;
+    }
+    
+    .title-text {
+        font-size: 2rem;
+    }
+    
+    .social-links {
+        flex-direction: column;
+        max-width: 200px;
+        margin: 0 auto 3rem;
+    }
+    
+    .booking-info {
+        text-align: center;
+    }
+}
