@@ -1,24 +1,76 @@
-// DOM Elements
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // DOM Elements
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+    
+    console.log('DOM loaded. Elements found:');
+    console.log('Hamburger:', hamburger);
+    console.log('Nav menu:', navMenu);
+    console.log('Mobile overlay:', mobileOverlay);
+    
+    if (!hamburger) {
+        console.error('Hamburger not found!');
+        return;
+    }
+    
+    if (!mobileOverlay) {
+        console.error('Mobile overlay not found!');
+        return;
+    }
+
+    // Mobile Navigation Toggle
+    hamburger.addEventListener('click', () => {
+        console.log('Hamburger clicked!');
+        hamburger.classList.toggle('active');
+        
+        // Toggle both old and new mobile menu systems
+        if (navMenu) {
+            navMenu.classList.toggle('active');
+        }
+        
+        mobileOverlay.classList.toggle('active');
+        console.log('Mobile overlay classes:', mobileOverlay.classList.toString());
+    });
+    
+    // Close mobile menu when clicking on nav links
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            if (navMenu) {
+                navMenu.classList.remove('active');
+            }
+            mobileOverlay.classList.remove('active');
+        });
+    });
+    
+    // Close mobile menu when clicking mobile nav links
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+        });
+    });
+    
+    // Close mobile menu when clicking close button
+    const mobileCloseBtn = document.querySelector('.mobile-close-btn');
+    if (mobileCloseBtn) {
+        mobileCloseBtn.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+        });
+    }
+});
+
+// Keep other DOM elements for existing functionality
 const hero = document.querySelector('.hero');
 const sections = document.querySelectorAll('section[id]');
 const playButtons = document.querySelectorAll('.play-btn');
 
-// Mobile Navigation Toggle
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
 
-// Close mobile menu when clicking on nav links
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-    });
-});
 
 // Smooth Scrolling for Navigation Links
 document.addEventListener('DOMContentLoaded', () => {
@@ -199,27 +251,31 @@ window.addEventListener('scroll', () => {
 // Dynamic Text Animation for Hero
 document.addEventListener('DOMContentLoaded', () => {
     const heroSubtitle = document.querySelector('.hero-subtitle');
-    const messages = [
-        'Crushing the Algorithm of Despair',
-        'Digital Decay in Endless Loops',
-        'Metal for the Disconnected Generation',
-        'Embrace the Void of Social Media'
-    ];
     
-    let messageIndex = 0;
-    
-    function rotateMessage() {
-        heroSubtitle.style.opacity = '0';
+    // Only run if the element exists
+    if (heroSubtitle) {
+        const messages = [
+            'Crushing the Algorithm of Despair',
+            'Digital Decay in Endless Loops',
+            'Metal for the Disconnected Generation',
+            'Embrace the Void of Social Media'
+        ];
         
-        setTimeout(() => {
-            messageIndex = (messageIndex + 1) % messages.length;
-            heroSubtitle.textContent = messages[messageIndex];
-            heroSubtitle.style.opacity = '1';
-        }, 500);
+        let messageIndex = 0;
+        
+        function rotateMessage() {
+            heroSubtitle.style.opacity = '0';
+            
+            setTimeout(() => {
+                messageIndex = (messageIndex + 1) % messages.length;
+                heroSubtitle.textContent = messages[messageIndex];
+                heroSubtitle.style.opacity = '1';
+            }, 500);
+        }
+        
+        // Change message every 4 seconds
+        setInterval(rotateMessage, 4000);
     }
-    
-    // Change message every 4 seconds
-    setInterval(rotateMessage, 4000);
 });
 
 // News Card Hover Effects
