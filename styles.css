@@ -40,23 +40,14 @@ html {
 body {
     font-family: var(--font-body);
     background: 
-        /* Base distressed texture */
-        radial-gradient(circle at 25% 25%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 50% 10%, rgba(139, 0, 0, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 20% 80%, rgba(0, 0, 0, 0.2) 0%, transparent 60%),
-        
-        /* Heavy scratches */
-        linear-gradient(23deg, transparent 0%, rgba(0,0,0,0.1) 1px, transparent 2px),
-        linear-gradient(-45deg, transparent 0%, rgba(139,0,0,0.05) 0.5px, transparent 1px),
-        linear-gradient(67deg, transparent 0%, rgba(0,0,0,0.08) 1px, transparent 2px),
-        
-        /* Base color */
-        var(--black);
-    background-size: 
-        100% 100%, 100% 100%, 100% 100%, 100% 100%,
-        100px 100px, 150px 150px, 80px 80px,
-        100% 100%;
+        /* Subtle overlay to maintain readability */
+        linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)),
+        /* New background image */
+        url('img/background.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: var(--bone-white);
     line-height: 1.6;
     overflow-x: hidden;
@@ -289,28 +280,7 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    background: 
-        /* Heavy battle damage */
-        linear-gradient(25deg, transparent 20%, rgba(0,0,0,0.8) 22%, rgba(0,0,0,0.8) 28%, transparent 30%),
-        linear-gradient(-40deg, transparent 60%, rgba(139,0,0,0.4) 62%, rgba(139,0,0,0.4) 68%, transparent 70%),
-        linear-gradient(75deg, transparent 80%, rgba(0,0,0,0.6) 82%, rgba(0,0,0,0.6) 86%, transparent 88%),
-        
-        /* Large burn marks */
-        radial-gradient(ellipse 300px 200px at 15% 80%, rgba(139,0,0,0.3) 30%, rgba(0,0,0,0.5) 60%, transparent 100%),
-        radial-gradient(ellipse 400px 150px at 85% 20%, rgba(0,0,0,0.6) 25%, rgba(139,0,0,0.2) 70%, transparent 100%),
-        
-        /* Base gradients */
-        linear-gradient(180deg, var(--black) 0%, var(--dark-gray) 30%, var(--black) 100%),
-        
-        /* Fine damage texture */
-        repeating-linear-gradient(
-            45deg,
-            transparent 0px,
-            rgba(139, 0, 0, 0.05) 2px,
-            transparent 8px,
-            rgba(0, 0, 0, 0.1) 12px,
-            transparent 20px
-        );
+    background: transparent;
     overflow: hidden;
 }
 
@@ -520,21 +490,7 @@ body {
 /* Releases Section */
 .releases {
     padding: var(--section-padding);
-    background: 
-        /* Major structural damage */
-        linear-gradient(45deg, transparent 40%, rgba(0,0,0,0.7) 42%, rgba(0,0,0,0.7) 48%, transparent 50%),
-        linear-gradient(-30deg, transparent 70%, rgba(139,0,0,0.5) 72%, rgba(139,0,0,0.5) 76%, transparent 78%),
-        
-        /* Large impact craters */
-        radial-gradient(ellipse 250px 150px at 20% 30%, rgba(0,0,0,0.6) 40%, rgba(139,0,0,0.2) 80%, transparent 100%),
-        radial-gradient(ellipse 200px 200px at 80% 70%, rgba(139,0,0,0.4) 30%, rgba(0,0,0,0.3) 70%, transparent 100%),
-        
-        /* Base background */
-        linear-gradient(135deg, var(--dark-gray) 0%, var(--black) 50%, var(--dark-gray) 100%),
-        
-        /* Weathering texture */
-        repeating-radial-gradient(circle at 30% 60%, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.3) 5px, transparent 15px),
-        repeating-radial-gradient(circle at 70% 20%, rgba(139,0,0,0.08) 0px, rgba(139,0,0,0.2) 3px, transparent 10px);
+    background: transparent;
     position: relative;
 }
 
@@ -786,28 +742,7 @@ body {
 /* News Section */
 .news {
     padding: var(--section-padding);
-    background: 
-        /* Severe battle scars */
-        linear-gradient(70deg, transparent 10%, rgba(0,0,0,0.8) 12%, rgba(0,0,0,0.8) 18%, transparent 20%),
-        linear-gradient(-20deg, transparent 50%, rgba(139,0,0,0.6) 52%, rgba(139,0,0,0.6) 58%, transparent 60%),
-        linear-gradient(35deg, transparent 80%, rgba(0,0,0,0.7) 82%, rgba(0,0,0,0.7) 86%, transparent 88%),
-        
-        /* Massive blast damage */
-        radial-gradient(ellipse 350px 200px at 70% 40%, rgba(0,0,0,0.7) 20%, rgba(139,0,0,0.3) 60%, transparent 100%),
-        radial-gradient(ellipse 180px 300px at 25% 70%, rgba(139,0,0,0.5) 35%, rgba(0,0,0,0.4) 75%, transparent 100%),
-        
-        /* Base color */
-        var(--black),
-        
-        /* Grime and wear */
-        repeating-linear-gradient(
-            -15deg,
-            rgba(0,0,0,0.05) 0px,
-            rgba(0,0,0,0.2) 3px,
-            transparent 8px,
-            rgba(139,0,0,0.08) 12px,
-            transparent 20px
-        );
+    background: transparent;
     position: relative;
 }
 
@@ -948,27 +883,7 @@ body {
 /* Contact Section */
 .contact {
     padding: var(--section-padding);
-    background: 
-        /* Heavy destruction */
-        linear-gradient(50deg, transparent 30%, rgba(0,0,0,0.8) 32%, rgba(0,0,0,0.8) 38%, transparent 40%),
-        linear-gradient(-60deg, transparent 65%, rgba(139,0,0,0.5) 67%, rgba(139,0,0,0.5) 73%, transparent 75%),
-        
-        /* Impact damage */
-        radial-gradient(ellipse 280px 180px at 60% 30%, rgba(139,0,0,0.4) 30%, rgba(0,0,0,0.5) 70%, transparent 100%),
-        radial-gradient(ellipse 150px 250px at 20% 80%, rgba(0,0,0,0.6) 25%, rgba(139,0,0,0.2) 65%, transparent 100%),
-        
-        /* Base gradient */
-        linear-gradient(45deg, var(--dark-gray) 0%, var(--black) 100%),
-        
-        /* Surface wear */
-        repeating-linear-gradient(
-            75deg,
-            rgba(0,0,0,0.08) 0px,
-            rgba(0,0,0,0.25) 2px,
-            transparent 6px,
-            rgba(139,0,0,0.1) 10px,
-            transparent 18px
-        );
+    background: transparent;
 }
 
 .contact-content {
